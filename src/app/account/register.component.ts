@@ -65,14 +65,17 @@ export class RegisterComponent implements OnInit {
       .register(this.form.value)
       .pipe(first())
       .subscribe(
-        (formData) => {
+        (data) => {
+          console.log('data');
           this.alertService.success('Registration successful', {
             keepAfterRouteChange: true,
           });
+
+          this.router.navigate(['/']);
         },
         (error) => {
           this.alertService.error(error);
-          this.router.navigate(['/']);
+
           this.loading = false;
         }
       );
@@ -80,18 +83,17 @@ export class RegisterComponent implements OnInit {
 
   onFileChange(event) {
     if (event.target.files.length > 0) {
-      const file = event.target.files[0];
+      const file = event.target.files;
 
       console.log(file);
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
 
-      reader.onload = () => {
-        console.log(reader.result);
-        this.form.patchValue({
-          image: reader.result,
-        });
-      };
+      var blob = new Blob(file, { type: file[0].type });
+
+      // Create Blog URL
+      var url = window.URL.createObjectURL(blob);
+      this.form.patchValue({
+        image: url,
+      });
     }
   }
 }

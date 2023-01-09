@@ -1,14 +1,16 @@
-<mat-card class="example-card">
+<mat-card class="example-card" height="100%">
   <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
+    <div mat-card-avatar class="example-header-image" fxFill></div>
   </mat-card-header>
 
   <mat-card-content>
-    <p>DEGREE: {{ details[0].degree }}</p>
-    <p>FIELD:{{ details[0].field }}</p>
-    <p>TECHNOLOGIES:{{ details[0].technologies }}</p>
-    <p>EMAIL:{{ details[0].email }}</p>
-    <p>AGE:{{ details[0].age }}</p>
+    <p><b>ABOUT: </b>{{ details[0].description }}</p>
+
+    <p><b>DEGREE:</b> {{ details[0].degree }}</p>
+    <p><b>FIELD:</b> {{ details[0].field }}</p>
+    <p><b>TECHNOLOGIES:</b> {{ details[0].technologies }}</p>
+    <p><b>EMAIL:</b> {{ details[0].email }}</p>
+    <p><b>AGE:</b> {{ details[0].age }}</p>
   </mat-card-content>
   <!-- <mat-card-actions>
     <button mat-button>LIKE</button>

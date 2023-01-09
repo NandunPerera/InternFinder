@@ -23,6 +23,12 @@ export class AccountService {
     'application/json'
   );
 
+  headers1 = new HttpHeaders().set(
+    'Content-Type',
+
+    'multipart/form-data'
+  );
+
   constructor(private router: Router, private http: HttpClient) {
     this.userSubject = new BehaviorSubject<User>(
       JSON.parse(localStorage.getItem('user'))
@@ -69,6 +75,11 @@ export class AccountService {
     console.log('deqwe', user);
     return this.http.post(`${this.api}/add-user`, JSON.stringify(user), {
       headers: this.headers,
+    });
+  }
+  imageUpload(formData: FormData) {
+    return this.http.post(`${this.api}/image-upload`, formData, {
+      headers: this.headers1,
     });
   }
 
